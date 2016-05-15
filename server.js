@@ -26,6 +26,10 @@ api.post('/user', function *() {
   this.body = yield create(model, this.request.body);
 });
 
+api.get('/users', function *() {
+  this.body = yield getAllUsers(model);
+});
+
 const create = (model, data) => {
   return new Promise((resolve, reject) => {
     model.create(data, (err, user) => {
@@ -33,6 +37,17 @@ const create = (model, data) => {
         reject(new Error('error in creating the user'))
       }
       resolve(user)
+    });
+  });
+};
+
+const getAllUsers = (model) => {
+  return new Promise((resolve, reject) => {
+    model.scan().exec((err, users) => {
+      if(err) {
+        reject(new Error('error in getting the users'))
+      }
+      resolve(users.Items);
     });
   });
 };
