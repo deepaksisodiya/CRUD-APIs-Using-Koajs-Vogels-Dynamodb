@@ -9,6 +9,9 @@ let app = koa();
 import router from 'koa-router';
 let api = router();
 
+
+import model from './model';
+
 app.use(api.routes());
 
 api.get('/', function *() {
