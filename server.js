@@ -23,6 +23,18 @@ api.get('/', function *() {
 
 api.post('/user', function *() {
   console.log('name ', this.request.body);
+  this.body = yield create(model, this.request.body);
 });
+
+const create = (model, data) => {
+  return new Promise((resolve, reject) => {
+    model.create(data, (err, user) => {
+      if(err) {
+        reject(new Error('error in creating the user'))
+      }
+      resolve(user)
+    });
+  });
+};
 
 app.listen(3000);
