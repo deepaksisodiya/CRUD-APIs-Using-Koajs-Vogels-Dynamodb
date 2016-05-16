@@ -34,6 +34,10 @@ api.get('/user/:userId', function *() {
   this.body = yield getSingleUser(model, this.params.userId);
 });
 
+api.delete('/user/:userId', function *() {
+  this.body = yield deleteSingleUser(model, this.params.userId);
+});
+
 const create = (model, data) => {
   return new Promise((resolve, reject) => {
     model.create(data, (err, user) => {
@@ -63,6 +67,17 @@ const getSingleUser = (model, userId) => {
         reject(new Error('Error in getting the user'));
       }
       resolve(user);
+    });
+  });
+};
+
+const deleteSingleUser = (model, userId) => {
+  return new Promise((resolve, reject) => {
+    model.destroy({userId: userId}, (err) => {
+      if(err) {
+        reject(new Error('Error in deleting the user'));
+      }
+      resolve('User deleted successfully');
     });
   });
 };
