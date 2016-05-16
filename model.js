@@ -16,7 +16,6 @@ import Joi from 'joi';
 
 let User = vogels.define('User', {
   hashKey: 'userId',
-  rangeKey: 'name',
   schema: {
     userId: vogels.types.uuid(),
     name: Joi.string(),

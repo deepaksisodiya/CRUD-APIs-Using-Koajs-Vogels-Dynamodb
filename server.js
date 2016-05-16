@@ -30,6 +30,10 @@ api.get('/users', function *() {
   this.body = yield getAllUsers(model);
 });
 
+api.get('/user/:userId', function *() {
+  this.body = yield getSingleUser(model, this.params.userId);
+});
+
 const create = (model, data) => {
   return new Promise((resolve, reject) => {
     model.create(data, (err, user) => {
@@ -48,6 +52,17 @@ const getAllUsers = (model) => {
         reject(new Error('error in getting the users'))
       }
       resolve(users.Items);
+    });
+  });
+};
+
+const getSingleUser = (model, userId) => {
+  return new Promise((resolve, reject) => {
+    model.get({userId: userId}, (err, user) => {
+      if(err) {
+        reject(new Error('Error in getting the user'));
+      }
+      resolve(user);
     });
   });
 };
