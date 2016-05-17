@@ -5,9 +5,8 @@
 
 import vogels from 'vogels';
 
-vogels.AWS.config.update({region: "ap-northeast-1"});
-
 const AWS = vogels.AWS;
+AWS.config.update({region: "ap-northeast-1"});
 const opts = {endpoint: 'http://localhost:8000', apiVersion: '2012-08-10'};
 const driver = new AWS.DynamoDB(opts);
 vogels.dynamoDriver(driver);

@@ -6,7 +6,6 @@
 import model from './model';
 
 export const createUser = function *() {
-  console.log('name ', this.request.body);
   this.body = yield create(model, this.request.body);
 };
 
