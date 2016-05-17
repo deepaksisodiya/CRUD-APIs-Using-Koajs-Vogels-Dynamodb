@@ -38,6 +38,11 @@ api.delete('/user/:userId', function *() {
   this.body = yield deleteSingleUser(model, this.params.userId);
 });
 
+api.put('/user/:userId', function *() {
+  let data = Object.assign({}, {userId:this.params.userId}, this.request.body);
+  this.body = yield updateUser(model, data);
+});
+
 const create = (model, data) => {
   return new Promise((resolve, reject) => {
     model.create(data, (err, user) => {
@@ -78,6 +83,17 @@ const deleteSingleUser = (model, userId) => {
         reject(new Error('Error in deleting the user'));
       }
       resolve('User deleted successfully');
+    });
+  });
+};
+
+const updateUser = (model, data) => {
+  return new Promise((resolve, reject) => {
+    model.update(data, (err, user) => {
+      if(err) {
+        reject(new Error('error in updating the user'));
+      }
+      resolve(user);
     });
   });
 };
