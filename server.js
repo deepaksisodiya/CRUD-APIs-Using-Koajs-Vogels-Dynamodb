@@ -15,22 +15,14 @@ app.use(koaBody());
 
 import model from './model';
 
-app.use(api.routes());
+
 
 api.get('/', function *() {
   this.body = 'Hello from koajs';
 });
 
-import {createUser, getUsers, getUser, deleteUser, updateUser} from './controller';
+import routes from './route';
 
-api.post('/user', createUser);
-
-api.get('/users', getUsers);
-
-api.get('/user/:userId', getUser);
-
-api.delete('/user/:userId', deleteUser);
-
-api.put('/user/:userId', updateUser);
+app.use(routes.routes());
 
 app.listen(3000);
