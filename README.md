@@ -1,6 +1,6 @@
 # CRUD-APIs-Using-Koajs-Vogels-Dynamodb
 
-* This repository CRUD(Create, Read, Update, Delete) APIs using Koajs Vogels and DynamoDB
+This repository CRUD(Create, Read, Update, Delete) APIs using Koajs Vogels and DynamoDB
 
 ## Technologies
 
