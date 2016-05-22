@@ -4,6 +4,6 @@
 
 ## Technologies
 
-* Koajs - node.js web application framework
-* Vogels - DynamoDB data mapper for node.js
-* Babel - Babel will turn your ES6+ code into ES5 friendly code
+* [Koajs](http://koajs.com/) - node.js web application framework
+* [Vogels](https://github.com/ryanfitz/vogels) - DynamoDB data mapper for node.js
+* [Babel](https://babeljs.io/) - Babel will turn your ES6+ code into ES5 friendly code
