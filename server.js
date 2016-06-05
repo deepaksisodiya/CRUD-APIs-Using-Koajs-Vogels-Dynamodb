@@ -9,6 +9,9 @@ let app = koa();
 import koaBody from 'koa-body';
 app.use(koaBody());
 
+import cors from 'koa-cors';
+app.use(cors());
+
 import model from './model';
 
 import routes from './route';
